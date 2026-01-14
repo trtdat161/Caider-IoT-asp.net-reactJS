@@ -20,14 +20,17 @@ namespace WebApplication1.Services
             try
             {
                 var messageBuilder = new MqttClientOptionsBuilder()
-                    .WithTcpServer(broker, port)
+                    .WithTcpServer(broker, port) // Kết nối ĐẾN broker.hivemq.com:1883 tại địa chỉ này
                     .WithClientId($"AspNetCore_{Guid.NewGuid()}")
                     .WithCleanSession();
 
                 var options = new ManagedMqttClientOptionsBuilder()
                     .WithClientOptions(messageBuilder.Build())
                     .Build();
-
+                // Điều này tạo MQTT Client(ko phải broker) cho ASP.NET Core backend 
+                // tức là ASP.NET Core = MQTT Client 1
+                // còn esp32 tạo mqtt client cho nó riêng thì sẽ là mqtt client 2
+                // cả hai đều connect 1 broker
                 _mqttClient = new MqttFactory().CreateManagedMqttClient();
 
                 _mqttClient.ConnectedAsync += async e =>
@@ -39,7 +42,7 @@ namespace WebApplication1.Services
                 {
                     _logger.LogWarning("disconnected MQTT");
                 };
-
+                // kết nối đên broker
                 await _mqttClient.StartAsync(options);
                 _logger.LogInformation("connecting MQTT...");
             }

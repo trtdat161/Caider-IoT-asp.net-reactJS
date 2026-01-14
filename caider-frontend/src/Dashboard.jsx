@@ -101,23 +101,23 @@ export function Dashboard() {
   return (
     <>
       <div className="container-fluid min-vh-100 d-flex flex-column">
-        <section className="flex-grow-1 d-flex flex-column">
-          <div className="row">
+        <div className="flex-grow-1 d-flex flex-column">
+          <header className="row">
             <div className="d-flex justify-content-between">
               <div className="status-caider p-2">
                 <div>Caider Control Dashboard</div>
                 <small>Robot Management System</small>
               </div>
               <div>
-                <div className="p-3">
+                <nav className="p-3">
                   <button className="gear-btn" onClick={manageHardware}>
                     <span className="me-2">caider manager</span>
                     <i className="bi bi-gear-wide-connected"></i>
                   </button>
-                </div>
+                </nav>
               </div>
             </div>
-          </div>
+          </header>
 
           <div className="row flex-grow-1">
             <div className="col-md-12">
@@ -128,8 +128,8 @@ export function Dashboard() {
           </div>
 
           {/* row 2 */}
-          <div className="row flex-grow-1">
-            <div className="col-md-3 display-left">
+          <main className="row flex-grow-1">
+            <aside className="col-md-3 display-left">
               <div className="infomation">
                 <div className="info1">
                   <div>robot name: Caider</div>
@@ -141,10 +141,10 @@ export function Dashboard() {
                   <CaiderScan />
                 </div>
               </div>
-            </div>
+            </aside>
 
             <div className="col-md-6 btn-main">
-              <main>
+              <div>
                 <div className="d-flex justify-content-center my-3 btn-connect">
                   <button onClick={connectCaider}>Connect with Caider</button>
                 </div>
@@ -166,10 +166,10 @@ export function Dashboard() {
                     </button>
                   </div>
                 </div>
-              </main>
+              </div>
             </div>
 
-            <div className="col-md-3 display-right">
+            <aside className="col-md-3 display-right">
               <div className="text-center p-2">device caider</div>
               <ul className="list-box">
                 <li>expansive: {expansive}</li>
@@ -241,9 +241,9 @@ export function Dashboard() {
                   `}</style>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
+            </aside>
+          </main>
+        </div>
       </div>
     </>
   );

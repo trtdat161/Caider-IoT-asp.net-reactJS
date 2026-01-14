@@ -17,7 +17,8 @@ builder.Services.AddDbContext<DataContext>(options =>
     )
 );
 
-// đăng ký mqtt services
+/* đăng ký mqtt services, MQTT client là luồng kết nối dài (persistent connection), 
+không tạo đi tạo lại cho mỗi request là lý do dùng AddSingleton */ 
 builder.Services.AddSingleton<MqttService>();
 /* ------------ đăng ký cors để gọi api --------- */
 builder.Services.AddCors(opt =>
@@ -55,10 +56,16 @@ app.MapPost("api/mqtt/connect", async (MqttService mqtt) =>
 {
     try
     {
+    // truyền vào 2 tham số là địa chỉ broker.hivemq.com và port mặc đinh mqtt là 1883
         await mqtt.ConnectAsync(
            broker: "broker.hivemq.com",// sài free của HiveMQ địa chỉ broker.hivemq.com
            port: 1883// port mặc định mqtt
        );
+       /*
+       backend kết nối tới broker HiveMQ
+       sau đó backend đã online trên broker
+       nó có thể Publish / Subscribe
+       */
         return Results.Ok(new
         {
             success = true,
