@@ -137,7 +137,7 @@ export function ExpansiveForm() {
                 value={microControlId}
                 onChange={(e) => {
                   setMicroControlId(e.target.value);
-                  setErrorMic(""); // ← Reset error khi chọn
+                  setErrorMic("");
                 }}
               >
                 <option value="" className="text-center">

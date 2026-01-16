@@ -13,14 +13,16 @@ import { MicrocontrollerForm } from "./crud/MicrocontrollerForm.jsx";
 import { ExpansiveForm } from "./crud/ExpansiveForm.jsx";
 import { ServoForm } from "./crud/ServoForm.jsx";
 import { MotorForm } from "./crud/MotorForm.jsx";
+import { Login } from "./Login.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
         {/* còn cái login */}
-        <Route path="/" element={<Dashboard />} />
-        {/* Outlet dùng phải bọc mấy thằng con bên trong như này */}
+        <Route path="/" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        {/* ----- Outlet dùng phải bọc mấy thằng con bên trong như này ----- */}
         <Route path="/manage" element={<DashboardManage />}>
           <Route index element={<ManagehardWare />} />
           <Route path="hardware" element={<ManagehardWare />} />
