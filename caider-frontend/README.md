@@ -20,6 +20,7 @@ Ngắn gọn: ứng dụng điều khiển và quản lý phần cứng robot Ca
    - cd Caider-backend/CaiderBackend
    - dotnet restore
    - dotnet run
+   - hoặc cài Visual Studio tím, cài đặt ASP.NET rồi mở backend .NET của dự án này lên chạy
 
 # Notes
 
